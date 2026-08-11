@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Link Verification - Digital Authentication System</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+
+    <style>
+        .magic-card {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6),
+                        0 0 35px rgba(0, 183, 255, 0.15);
+            text-align: center;
+            max-width: 440px;
+            width: 90%;
+            margin: auto;
+            animation: panelFade 0.5s ease-out;
+        }
+
+        .magic-icon {
+            font-size: 52px;
+            color: #38bdf8;
+            margin-bottom: 20px;
+            text-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+            animation: pulse 2.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); opacity: 0.9; }
+            100% { transform: scale(1); }
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Background elements synced with your theme -->
+<div id="stars">
+    <div class="star" style="left:8%;animation-duration:18s;"></div>
+    <div class="star" style="left:22%;animation-duration:22s;"></div>
+    <div class="star" style="left:45%;animation-duration:20s;"></div>
+    <div class="star" style="left:65%;animation-duration:25s;"></div>
+    <div class="star" style="left:88%;animation-duration:19s;"></div>
+</div>
+
+<div id="mouse-light"></div>
+
+<div class="container" style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+
+    <div class="magic-card">
+
+        <div class="magic-icon">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </div>
+
+        <h2 style="color:#fff; margin-bottom:12px; font-weight:600; font-size:24px;">Magic Link Dispatched</h2>
+
+        <p style="color:#94a3b8; font-size:14px; line-height:1.6; margin-bottom: 15px;">
+            A one-click secure verification link has been sent to:<br>
+            <strong style="color:#38bdf8; font-weight: 600;" th:text="${email}">user@example.com</strong>
+        </p>
+
+        <p style="color:#64748b; font-size:12px; line-height:1.5; padding: 0 10px;">
+            Open your email inbox and click the sign-in link to finalize authentication. It will automatically redirect you to the dashboard. You can close this tab safely now.
+        </p>
+
+        <a th:href="@{/login}" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i> Return to Login
+        </a>
+
+    </div>
+
+</div>
+
+<!-- Re-use light tracking script -->
+<script th:src="@{/js/login.js}"></script>
+
+</body>
+</html>

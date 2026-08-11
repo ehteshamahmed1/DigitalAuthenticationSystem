@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CAPTCHA Verification</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #121212; 
+            color: #ffffff; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+        }
+        .captcha-card { 
+            background: #1e1e24; 
+            padding: 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5); 
+            text-align: center; 
+            width: 340px; 
+        }
+        .captcha-img-box { 
+            margin: 15px 0; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 10px; 
+        }
+        .captcha-img-box img { 
+            border-radius: 8px; 
+            border: 1px solid #444; 
+            max-width: 220px; 
+            height: auto; 
+        }
+        .refresh-btn { 
+            background: #333; 
+            color: #fff; 
+            border: 1px solid #555; 
+            padding: 10px 14px; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            font-size: 16px;
+        }
+        .refresh-btn:hover {
+            background: #444;
+        }
+        .input-field { 
+            width: 100%; 
+            padding: 12px; 
+            margin: 12px 0; 
+            border-radius: 6px; 
+            border: 1px solid #444; 
+            background: #2a2a32; 
+            color: #fff; 
+            box-sizing: border-box; 
+            font-size: 15px;
+        }
+        .submit-btn { 
+            width: 100%; 
+            padding: 12px; 
+            background: #007bff; 
+            border: none; 
+            color: white; 
+            border-radius: 6px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            font-size: 15px;
+        }
+        .submit-btn:hover {
+            background: #0056b3;
+        }
+        .error { 
+            color: #ff4d4d; 
+            font-size: 14px; 
+            margin-bottom: 10px; 
+        }
+    </style>
+</head>
+<body>
+
+<div class="captcha-card">
+    <h2>CAPTCHA Security</h2>
+    <p style="color: #aaa; font-size: 14px;">Type the characters shown in the image below:</p>
+
+    <!-- Error Message Display -->
+    <div th:if="${error}" class="error" th:text="${error}"></div>
+    <div th:if="${param.error != null and param.error[0] == 'invalid'}" class="error">
+        ❌ Invalid or expired CAPTCHA code!
+    </div>
+
+    <!-- Submit to /verifyCaptcha instead of /login -->
+    <form th:action="@{/verifyCaptcha}" method="post">
+        <!-- CSRF Token -->
+        <input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+        <!-- Dynamically Generated CAPTCHA Image -->
+        <div class="captcha-img-box">
+            <img id="captchaImg" th:src="@{/captcha-image}" alt="CAPTCHA Code"/>
+            <button type="button" class="refresh-btn" onclick="refreshCaptcha()" title="Refresh CAPTCHA">🔄</button>
+        </div>
+
+        <!-- Input Field -->
+        <input type="text" name="captcha" class="input-field" placeholder="Enter CAPTCHA Code" required autocomplete="off"/>
+        
+        <button type="submit" class="submit-btn">Verify & Continue</button>
+    </form>
+</div>
+
+<script>
+    function refreshCaptcha() {
+        document.getElementById('captchaImg').src = '/captcha-image?' + new Date().getTime();
+    }
+</script>
+
+</body>
+</html>

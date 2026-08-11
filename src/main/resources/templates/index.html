@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Digital Authentication System</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+
+<body>
+
+<!-- ================= STAR BACKGROUND ================= -->
+
+<div id="stars"></div>
+
+<div id="mouse-light"></div>
+
+
+<!-- ================= HERO SECTION ================= -->
+
+<section class="hero">
+
+    <div class="glass-card">
+
+        <div class="shield">
+
+            <i class="fa-solid fa-user-shield"></i>
+
+        </div>
+
+        <h4>WELCOME TO</h4>
+
+        <h1>
+
+            DIGITAL
+
+            <span>AUTHENTICATION</span>
+
+            SYSTEM
+
+        </h1>
+
+        <p>
+
+            One Platform.
+
+            Multiple Authentication Methods.
+
+            <br>
+
+            Secure • Smart • Reliable
+
+        </p>
+
+        <a href="/login" class="continue-btn">
+
+            Continue
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </a>
+
+    </div>
+
+</section>
+<script th:src="@{/js/script.js}"></script>
+
+</body>
+
+</html>

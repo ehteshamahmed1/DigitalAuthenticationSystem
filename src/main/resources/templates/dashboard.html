@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Digital Authentication System</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+
+    <style>
+        .dashboard-container {
+            max-width: 650px;
+            width: 90%;
+            margin: 100px auto;
+        }
+
+        .welcome-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            color: #fff;
+        }
+
+        .user-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .user-avatar {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 255, 153, 0.15);
+            color: #00ff99;
+            border: 1px solid rgba(0, 255, 153, 0.3);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .logout-btn {
+            background: rgba(255, 77, 77, 0.2);
+            color: #ff4d4d;
+            border: 1px solid rgba(255, 77, 77, 0.4);
+            padding: 10px 22px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logout-btn:hover {
+            background: #ff4d4d;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="stars">
+    <div class="star" style="left:8%;animation-duration:18s;"></div>
+    <div class="star" style="left:18%;animation-duration:22s;"></div>
+    <div class="star" style="left:28%;animation-duration:20s;"></div>
+    <div class="star" style="left:40%;animation-duration:25s;"></div>
+    <div class="star" style="left:55%;animation-duration:19s;"></div>
+    <div class="star" style="left:70%;animation-duration:21s;"></div>
+    <div class="star" style="left:82%;animation-duration:24s;"></div>
+    <div class="star" style="left:94%;animation-duration:20s;"></div>
+</div>
+
+<div class="dashboard-container">
+
+    <div class="welcome-card">
+
+        <div class="user-header">
+            <div style="display:flex; align-items:center; gap:20px;">
+                <div class="user-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div>
+                    <!-- Display Welcome + Registered User Email -->
+					<h2 style="margin:0; font-size:22px; font-weight:600;">
+					    Welcome, <span style="color:#00d2ff;" th:text="${fullName}">User</span>
+					</h2>
+
+                    <span style="color:rgba(255,255,255,0.6); font-size:14px;">You have successfully authenticated!</span>
+                </div>
+            </div>
+
+            <div class="status-badge">
+                <i class="fa-solid fa-circle-check"></i> Verified
+            </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.1); padding-top:25px; margin-top: 30px;">
+            <p style="margin:0; font-size:13px; color:rgba(255,255,255,0.5);">
+                Digital Authentication System • Session Active
+            </p>
+            <a th:href="@{/logout}" class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

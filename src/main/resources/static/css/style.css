@@ -1,0 +1,1045 @@
+/* ==========================================================
+   DIGITAL AUTHENTICATION SYSTEM
+   Premium Landing Page
+========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:'Poppins',sans-serif;
+    background:#020617;
+    color:#fff;
+
+}
+
+body{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+
+}
+
+/* ==========================================================
+                    ANIMATED BACKGROUND
+========================================================== */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+        radial-gradient(circle at 20% 20%,rgba(0,180,255,.18),transparent 28%),
+        radial-gradient(circle at 80% 10%,rgba(106,90,255,.18),transparent 28%),
+        radial-gradient(circle at 50% 90%,rgba(0,255,255,.10),transparent 30%),
+        linear-gradient(
+            135deg,
+            #020617,
+            #071428,
+            #0b1023,
+            #000814
+        );
+
+    background-size:250% 250%;
+
+    animation:gradientMove 18s ease infinite;
+
+    z-index:-5;
+
+}
+
+@keyframes gradientMove{
+
+    0%{
+
+        background-position:0% 50%;
+
+    }
+
+    50%{
+
+        background-position:100% 50%;
+
+    }
+
+    100%{
+
+        background-position:0% 50%;
+
+    }
+
+}
+
+/* ==========================================================
+                        STARS
+========================================================== */
+
+#stars{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-4;
+
+}
+
+.star{
+
+    position:absolute;
+
+    background:white;
+
+    border-radius:50%;
+
+    opacity:.8;
+
+    animation:twinkle linear infinite;
+
+}
+
+@keyframes twinkle{
+
+    0%{
+
+        transform:translateY(100vh) scale(.3);
+
+        opacity:.2;
+
+    }
+
+    50%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:translateY(-120vh) scale(1);
+
+        opacity:.2;
+
+    }
+
+}
+
+/* ==========================================================
+                  MOUSE GLOW
+========================================================== */
+
+#mouse-light{
+
+    position:fixed;
+
+    width:380px;
+
+    height:380px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,183,255,.25),
+            rgba(0,183,255,.08),
+            transparent 70%
+        );
+
+    pointer-events:none;
+
+    transform:translate(-50%,-50%);
+
+    filter:blur(12px);
+
+    z-index:-3;
+
+    transition:all .08s linear;
+
+}
+
+/* ==========================================================
+                    HERO CONTAINER
+========================================================== */
+
+.hero{
+
+    width:100%;
+
+    height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+}
+/* ==========================================================
+                    GLASS CARD
+========================================================== */
+
+.glass-card{
+
+    width:760px;
+    max-width:92%;
+
+    padding:40px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    text-align:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 0 40px rgba(0,183,255,.18),
+        0 0 80px rgba(120,80,255,.12);
+
+    animation:fadeUp 1.2s ease;
+
+}
+
+/* Animated Border */
+
+.glass-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-2px;
+
+    border-radius:30px;
+
+    padding:2px;
+
+    background:linear-gradient(
+        45deg,
+        #00b7ff,
+        #7b61ff,
+        #00ffe5,
+        #00b7ff
+    );
+
+    background-size:400%;
+
+    animation:borderMove 8s linear infinite;
+
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    mask-composite:exclude;
+
+    -webkit-mask-composite:xor;
+
+}
+
+/* ==========================================================
+                    ANIMATIONS
+========================================================== */
+
+@keyframes borderMove{
+
+    0%{
+
+        background-position:0%;
+
+    }
+
+    100%{
+
+        background-position:400%;
+
+    }
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(60px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================================================
+                     SHIELD ICON
+========================================================== */
+
+.shield{
+
+    width:90px;
+
+    height:90px;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        135deg,
+        #00b7ff,
+        #6f7dff
+    );
+
+    box-shadow:
+        0 0 25px rgba(0,183,255,.45),
+        0 0 60px rgba(0,183,255,.20);
+
+    animation:pulse 3s infinite;
+
+}
+
+.shield i{
+
+    font-size:42px;
+
+    color:#fff;
+
+}
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.08);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==========================================================
+                      SUBTITLE
+========================================================== */
+
+.glass-card h4{
+
+    margin-top:25px;
+
+    color:#89cfff;
+
+    letter-spacing:6px;
+
+    text-transform:uppercase;
+
+    font-size:15px;
+
+    font-weight:500;
+
+}
+
+/* ==========================================================
+                        TITLE
+========================================================== */
+
+.glass-card h1{
+
+    margin-top:18px;
+
+    font-family:'Cinzel',serif;
+
+    font-size:52px;
+
+    line-height:1.15;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    color:#fff;
+
+}
+
+/* Gradient Highlight */
+
+.glass-card h1 span{
+
+    display:block;
+
+    margin-top:10px;
+
+    background:linear-gradient(
+        90deg,
+        #00d4ff,
+        #5b8cff,
+        #7d5cff,
+        #00ffe0
+    );
+
+    background-size:300%;
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    animation:textGradient 8s linear infinite;
+
+}
+
+@keyframes textGradient{
+
+    from{
+
+        background-position:0%;
+
+    }
+
+    to{
+
+        background-position:300%;
+
+    }
+
+}
+
+/* ==========================================================
+                     DESCRIPTION
+========================================================== */
+
+.glass-card p{
+
+    margin-top:20px;
+
+    font-size:17px;
+
+    line-height:30px;
+
+    color:#d6e8ff;
+
+    font-weight:300;
+
+}/* ==========================================================
+                    CONTINUE BUTTON
+========================================================== */
+
+.continue-btn{
+
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+
+    margin-top:30px;
+
+    padding:15px 42px;
+
+    border-radius:60px;
+
+    text-decoration:none;
+
+    color:#fff;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    letter-spacing:.5px;
+
+    background:linear-gradient(
+        135deg,
+        #009dff,
+        #5b6dff,
+        #00d4ff
+    );
+
+    background-size:250%;
+
+    transition:.45s;
+
+    position:relative;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 0 20px rgba(0,183,255,.45),
+        0 0 50px rgba(0,183,255,.18);
+
+}
+
+.continue-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:60%;
+
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.45),
+        transparent
+    );
+
+    transform:skewX(-25deg);
+
+    transition:.8s;
+
+}
+
+.continue-btn:hover::before{
+
+    left:150%;
+
+}
+
+.continue-btn:hover{
+
+    transform:translateY(-5px);
+
+    background-position:right center;
+
+    box-shadow:
+        0 0 35px rgba(0,183,255,.8),
+        0 0 70px rgba(0,183,255,.35);
+
+}
+
+.continue-btn i{
+
+    transition:.35s;
+
+}
+
+.continue-btn:hover i{
+
+    transform:translateX(8px);
+
+}
+
+/* ==========================================================
+                REMOVE PAGE SCROLL
+========================================================== */
+
+html,
+body{
+
+    overflow:hidden;
+
+}
+
+/* ==========================================================
+                RESPONSIVE DESIGN
+========================================================== */
+
+@media(max-width:992px){
+
+    .glass-card{
+
+        width:92%;
+
+        padding:35px;
+
+    }
+
+    .glass-card h1{
+
+        font-size:42px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .hero{
+
+        padding:15px;
+
+    }
+
+    .glass-card{
+
+        padding:28px;
+
+    }
+
+    .shield{
+
+        width:80px;
+        height:80px;
+
+    }
+
+    .shield i{
+
+        font-size:36px;
+
+    }
+
+    .glass-card h4{
+
+        font-size:13px;
+
+        letter-spacing:4px;
+
+    }
+
+    .glass-card h1{
+
+        font-size:34px;
+
+        line-height:1.2;
+
+    }
+
+    .glass-card p{
+
+        font-size:16px;
+
+        line-height:28px;
+
+    }
+
+    .continue-btn{
+
+        padding:14px 30px;
+
+        font-size:16px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .glass-card{
+
+        padding:24px 20px;
+
+    }
+
+    .glass-card h1{
+
+        font-size:28px;
+
+    }
+
+    .glass-card p{
+
+        font-size:15px;
+
+        line-height:24px;
+
+    }
+
+    .continue-btn{
+
+        width:100%;
+
+        justify-content:center;
+
+    }
+
+}
+
+/* ==========================================================
+                HIDE SCROLLBAR
+========================================================== */
+
+::-webkit-scrollbar{
+
+    display:none;
+
+}
+/* ==========================================================
+                FLOATING PARTICLES
+========================================================== */
+
+.particle{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.8);
+
+    animation:floatParticle linear infinite;
+
+    pointer-events:none;
+
+    box-shadow:
+        0 0 12px rgba(0,183,255,.8);
+
+}
+
+@keyframes floatParticle{
+
+    0%{
+
+        transform:
+            translateY(100vh)
+            translateX(0)
+            scale(.2);
+
+        opacity:0;
+
+    }
+
+    20%{
+
+        opacity:1;
+
+    }
+
+    80%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:
+            translateY(-120vh)
+            translateX(120px)
+            scale(1);
+
+        opacity:0;
+
+    }
+
+}
+
+/* ==========================================================
+                    SHOOTING STARS
+========================================================== */
+
+.shooting-star{
+
+    position:absolute;
+
+    width:180px;
+
+    height:2px;
+
+    background:linear-gradient(
+        90deg,
+        #ffffff,
+        #00cfff,
+        transparent
+    );
+
+    border-radius:50px;
+
+    transform:rotate(-35deg);
+
+    opacity:0;
+
+    animation:shooting 7s linear infinite;
+
+}
+
+.shooting-star:nth-child(1){
+
+    top:8%;
+    left:72%;
+
+    animation-delay:1s;
+
+}
+
+.shooting-star:nth-child(2){
+
+    top:25%;
+    left:10%;
+
+    animation-delay:4s;
+
+}
+
+.shooting-star:nth-child(3){
+
+    top:45%;
+    left:82%;
+
+    animation-delay:6.5s;
+
+}
+
+@keyframes shooting{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            translate(0,0)
+            rotate(-35deg);
+
+    }
+
+    8%{
+
+        opacity:1;
+
+    }
+
+    25%{
+
+        opacity:0;
+
+        transform:
+            translate(-420px,420px)
+            rotate(-35deg);
+
+    }
+
+    100%{
+
+        opacity:0;
+
+    }
+
+}
+
+/* ==========================================================
+                    CARD GLOW
+========================================================== */
+
+.glass-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:260px;
+
+    height:260px;
+
+    background:radial-gradient(
+
+        circle,
+
+        rgba(0,183,255,.15),
+
+        transparent 70%
+
+    );
+
+    top:-120px;
+
+    right:-120px;
+
+    border-radius:50%;
+
+    animation:cardGlow 6s ease-in-out infinite;
+
+}
+
+@keyframes cardGlow{
+
+    0%{
+
+        transform:scale(1);
+
+        opacity:.6;
+
+    }
+
+    50%{
+
+        transform:scale(1.2);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+        opacity:.6;
+
+    }
+
+}
+
+/* ==========================================================
+                LOGO HOVER
+========================================================== */
+
+.shield{
+
+    transition:.5s;
+
+}
+
+.shield:hover{
+
+    transform:
+        rotate(8deg)
+        scale(1.08);
+
+    box-shadow:
+
+        0 0 40px rgba(0,183,255,.8),
+
+        0 0 90px rgba(0,183,255,.4);
+
+}
+
+/* ==========================================================
+                TITLE GLOW
+========================================================== */
+
+.glass-card h1{
+
+    text-shadow:
+
+        0 0 15px rgba(0,183,255,.4),
+
+        0 0 35px rgba(0,183,255,.25);
+
+}
+
+/* ==========================================================
+                PARAGRAPH FADE
+========================================================== */
+
+.glass-card p{
+
+    animation:textFade 1.5s ease;
+
+}
+
+@keyframes textFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================================================
+                FOOTER (OPTIONAL)
+========================================================== */
+
+.footer{
+
+    position:absolute;
+
+    bottom:20px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    color:#8ab5d9;
+
+    font-size:14px;
+
+    letter-spacing:1px;
+
+    opacity:.75;
+
+}
+
+/* ==========================================================
+                PERFORMANCE
+========================================================== */
+
+*{
+
+    -webkit-font-smoothing:antialiased;
+
+    -moz-osx-font-smoothing:grayscale;
+
+    text-rendering:optimizeLegibility;
+
+}
+
+body{
+
+    will-change:transform;
+
+}
+
+/* ==========================================================
+                END OF CSS
+========================================================== */

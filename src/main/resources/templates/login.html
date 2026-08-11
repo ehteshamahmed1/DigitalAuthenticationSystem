@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Digital Authentication System</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Login CSS -->
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+
+<body>
+
+<!-- Animated Background Elements -->
+<div id="stars">
+    <div class="star" style="left:8%;animation-duration:18s;"></div>
+    <div class="star" style="left:18%;animation-duration:22s;"></div>
+    <div class="star" style="left:28%;animation-duration:20s;"></div>
+    <div class="star" style="left:40%;animation-duration:25s;"></div>
+    <div class="star" style="left:55%;animation-duration:19s;"></div>
+    <div class="star" style="left:70%;animation-duration:21s;"></div>
+    <div class="star" style="left:82%;animation-duration:24s;"></div>
+    <div class="star" style="left:94%;animation-duration:20s;"></div>
+</div>
+
+<div id="mouse-light"></div>
+
+<!-- Login / Register Container -->
+<div class="container">
+
+    <div class="panel">
+
+        <!-- Logo / Brand -->
+        <div class="brand">
+            <h1>Digital Authentication System</h1>
+            <p>Secure • Smart • Reliable</p>
+        </div>
+
+        <!-- Alert Notifications -->
+        <div th:if="${param.registered}" class="alert alert-success" style="color: #4CAF50; margin-bottom: 10px; text-align: center;">
+            Account registered successfully! Please log in.
+        </div>
+        
+        <div th:if="${param.error}" class="alert alert-danger" style="color: #FF5252; margin-bottom: 10px; text-align: center;">
+            Invalid email/mobile or password.
+        </div>
+
+        <div th:if="${error}" class="alert alert-danger" style="color: #FF5252; margin-bottom: 10px; text-align: center;" th:text="${error}">
+        </div>
+
+        <!-- Tab Toggle Buttons -->
+        <div class="tabs">
+            <button type="button" id="loginTab" class="active">Login</button>
+            <button type="button" id="registerTab">Register</button>
+        </div>
+
+        <!-- ===========================
+             1. LOGIN FORM
+        =========================== -->
+        <form id="loginForm" th:action="@{/login}" method="post">
+
+            <!-- CSRF Token -->
+            <input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+            <input type="text"
+                   name="username"
+                   placeholder="Email Address or Mobile Number"
+                   required
+                   autocomplete="username">
+
+            <div class="password-container">
+                <input type="password"
+                       id="loginPassword"
+                       name="password"
+                       placeholder="Password"
+                       required
+                       autocomplete="current-password">
+
+                <span class="toggle-password" onclick="togglePassword('loginPassword', this)">
+                    <i class="fa-solid fa-eye"></i>
+                </span>
+            </div>
+
+            <button type="submit" class="primary">Login</button>
+
+        </form>
+
+        <!-- ===========================
+             2. REGISTER FORM
+        =========================== -->
+        <form id="registerForm" class="hidden" th:action="@{/register}" method="post">
+
+            <!-- CSRF Token -->
+            <input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+            <input type="text"
+                   name="fullName"
+                   placeholder="Full Name"
+                   required>
+
+            <input type="email"
+                   name="email"
+                   placeholder="Email Address"
+                   required>
+
+            <input type="text"
+                   name="mobile"
+                   placeholder="Mobile Number"
+                   required>
+
+            <!-- Password -->
+            <div class="password-container">
+                <input type="password"
+                       id="registerPassword"
+                       name="password"
+                       placeholder="Password"
+                       required>
+
+                <span class="toggle-password" onclick="togglePassword('registerPassword', this)">
+                    <i class="fa-solid fa-eye"></i>
+                </span>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="password-container">
+                <input type="password"
+                       id="confirmPassword"
+                       name="confirmPassword"
+                       placeholder="Confirm Password"
+                       required>
+
+                <span class="toggle-password" onclick="togglePassword('confirmPassword', this)">
+                    <i class="fa-solid fa-eye"></i>
+                </span>
+            </div>
+
+            <!-- Authentication Method -->
+            <select id="authenticationType" name="authenticationType" required>
+                <option value="" disabled selected>Choose Authentication Method</option>
+                <option value="EMAIL_OTP">Email OTP Authentication</option>
+                <option value="MOBILE_OTP">Mobile OTP Authentication</option>
+                <option value="PUZZLE">Puzzle Authentication</option>
+                <option value="MAGIC_LINK">Magic Link Authentication</option>
+                <option value="QR_CODE">QR Code Authentication</option>
+                <option value="CAPTCHA">CAPTCHA Authentication</option>
+            </select>
+
+            <button type="submit" class="primary">Create Account</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- Login JavaScript -->
+<script th:src="@{/js/login.js}"></script>
+
+</body>
+</html>
